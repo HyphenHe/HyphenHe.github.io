@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -225,8 +225,8 @@
                 <img src="https://via.placeholder.com/200x200/3498db/ffffff?text=Your+Photo" alt="个人照片" id="profile-pic">
             </div>
             
-            <h1 id="username">你的名字</h1>
-            <p class="title" id="job-title">你的职位/专业</p>
+            <h1 id="username">何奕峰</h1>
+            <p class="title" id="job-title">2027届/香港中文大学</p>
             
             <div class="contact-info">
                 <div class="contact-item">
@@ -235,7 +235,7 @@
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt"></i>
-                    <span id="location">所在城市</span>
+                    <span id="location">上海/深圳/香港</span>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
@@ -249,7 +249,7 @@
             
             <div class="about">
                 <h3>关于我</h3>
-                <p id="user-bio">这里是一段简短的自我介绍，描述你的研究兴趣、专业方向和职业目标。</p>
+                <p id="user-bio">目前英专在读，向人力资源转型中</p>
             </div>
             
             <div class="skills">
