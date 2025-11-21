@@ -6,23 +6,153 @@
     <title>何奕峰 - 个人主页</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
-        /* 样式部分省略，保持不变 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            position: relative;
+        }
+        .lang-switch {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+        }
+        .lang-link {
+            color: white;
+            background: rgba(0,0,0,0.2);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            backdrop-filter: blur(4px);
+        }
+        .lang-link:hover {
+            background: rgba(0,0,0,0.3);
+            text-decoration: underline;
+        }
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            padding: 2.5rem;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.4rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            color: #7f8c8d;
+            margin-bottom: 1.8rem;
+            font-size: 1.1rem;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.8rem 0;
+        }
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 0.9rem;
+            width: 80px;
+        }
+        .social-link i {
+            font-size: 1.8rem;
+            margin-bottom: 0.4rem;
+        }
+        .social-link:hover i,
+        .social-link:hover {
+            color: #2980b9;
+        }
+        .intro {
+            background: #f9fafb;
+            padding: 1.4rem;
+            border-radius: 12px;
+            margin: 1.8rem 0;
+            text-align: left;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .intro p {
+            margin-bottom: 0.8rem;
+        }
+        .nav-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .nav-item {
+            padding: 0.9rem 0.5rem;
+            background: #f1f8ff;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .nav-item:hover {
+            background: #e1f0ff;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.8rem 1.2rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .social-links {
+                gap: 1rem;
+            }
+            .social-link {
+                width: 70px;
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
+    <!-- 英文入口（右上角） -->
+    <div class="lang-switch">
+        <a href="en.html" class="lang-link">English →</a>
+    </div>
+
+    <div class="container">
         <h1>何奕峰</h1>
         <div class="subtitle">人力资源 | 招聘 | 跨领域实践者</div>
 
         <div class="social-links">
-            <a href="mailto:yifenghe01@gmail.com" class="social-link">
-                <i class="fas fa-envelope"></i> yifenghe01@gmail.com
+            <a href="mailto:yifenghe01@gmail.com" class="social-link" title="邮箱">
+                <i class="fas fa-envelope"></i>
+                邮箱
             </a>
-            <a href="https://www.linkedin.com/in/yifeng-he-7b0a0b23a/" target="_blank" class="social-link">
-                <i class="fab fa-linkedin"></i> LinkedIn
+            <a href="https://www.linkedin.com/in/yifeng-he-7b0a0b23a/" target="_blank" class="social-link" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+                LinkedIn
             </a>
-            <a href="https://github.com/HyphenHe" target="_blank" class="social-link">
-                <i class="fab fa-github"></i> GitHub
+            <a href="https://github.com/HyphenHe" target="_blank" class="social-link" title="GitHub">
+                <i class="fab fa-github"></i>
+                GitHub
             </a>
         </div>
 
@@ -35,16 +165,12 @@
                 <li><strong>相匹配的性格态度</strong>：能够进行高效沟通，也能细致入微地完成各项工作，具备快速的学习能力与负责的工作态度</li>
             </ul>
         </div>
-    </header>
 
-    <div class="nav-links">
-        <a href="education.html" class="nav-item">教育背景</a>
-        <a href="campus.html" class="nav-item">校园与媒体</a>
-        <a href="internships.html" class="nav-item">实习经历</a>
-    </div>
-
-    <div class="lang-switch">
-        <a href="en.html" class="lang-link">→ English Version (Coming Soon)</a>
+        <div class="nav-links">
+            <a href="education.html" class="nav-item">教育背景</a>
+            <a href="campus.html" class="nav-item">校园与媒体</a>
+            <a href="internships.html" class="nav-item">实习经历</a>
+        </div>
     </div>
 </body>
 </html>
