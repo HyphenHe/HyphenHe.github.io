@@ -27,7 +27,7 @@
         /* 左侧边栏样式 */
         .sidebar {
             flex: 0 0 320px;
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            background: linear-gradient(135deg, #a7c5eb 0%, #7fb0d3 100%);
             color: white;
             padding: 2rem;
             position: fixed;
@@ -256,6 +256,12 @@
         .blog-post h3 {
             margin-bottom: 0.8rem;
             color: #2c3e50;
+        }
+
+        .blog-meta {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
         }
 
         .blog-link {
@@ -498,9 +504,7 @@
             <section id="publications" class="section">
                 <h2>论文发表</h2>
                 <div class="publication-item">
-                    <h3>英语专业学生跨文化交际能力培养路径研究</h3>
-                    <p><strong>何奕峰</strong> (2024). 英语专业学生跨文化交际能力培养路径研究. <em>现代教育研究</em>, 12(3), 45-52.</p>
-                    <p>本研究探讨了英语专业学生在跨文化交际能力培养过程中面临的挑战与机遇，通过实证研究分析了现有培养模式的优缺点，并提出了一套基于实践导向的培养路径。研究发现，结合项目式学习和真实跨文化交流情境的教学方法能有效提升学生的跨文化交际能力。</p>
+                    <p><strong>He, Y.,</strong> Chen, L., Wang, M., & Liu, X. (2024). 英语专业学生跨文化交际能力培养路径研究. <em>现代教育研究</em>, 12(3), 45-52. http://www.isciencegroup.com/cn/articleinfo/10440071</p>
                     <a href="http://www.isciencegroup.com/cn/articleinfo/10440071" class="publication-link" target="_blank">查看论文全文 →</a>
                 </div>
             </section>
@@ -511,17 +515,17 @@
                 <div class="blog-posts">
                     <div class="blog-post">
                         <h3>模联大会回顾 | 青年外交官的成长之旅</h3>
-                        <p>记录了2024年南京大学模拟联合国大会的精彩瞬间，展现了青年学子在国际事务讨论中的风采与成长。</p>
+                        <div class="blog-meta">发布于 2024年5月 | 南播玩工作室</div>
                         <a href="https://mp.weixin.qq.com/s/jmioeHj3xxTB4y6DtF_vva" class="blog-link" target="_blank">阅读全文 →</a>
                     </div>
                     <div class="blog-post">
                         <h3>国际组织实习经验分享</h3>
-                        <p>分享了在国际救助儿童会实习的经历与收获，探讨了在国际组织工作的挑战与机遇。</p>
+                        <div class="blog-meta">发布于 2024年3月 | 南播玩工作室</div>
                         <a href="https://mp.weixin.qq.com/s/jPyS_MG5eMgTgrMfJtkg0Q" class="blog-link" target="_blank">阅读全文 →</a>
                     </div>
                     <div class="blog-post">
                         <h3>校园招聘新趋势 | 人才Mapping实战解析</h3>
-                        <p>结合小红书实习经验，分析了当前校园招聘的最新趋势，并分享了人才Mapping的实践方法与技巧。</p>
+                        <div class="blog-meta">发布于 2024年8月 | 南播玩工作室</div>
                         <a href="https://mp.weixin.qq.com/s/sKZze8Bny8qJrV7FX8w9oA" class="blog-link" target="_blank">阅读全文 →</a>
                     </div>
                 </div>
