@@ -100,6 +100,18 @@
             font-size: 0.9rem;
         }
 
+        .social-link {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .social-link:hover {
+            text-decoration: underline;
+        }
+
         /* 右侧主内容区样式 */
         .main-content {
             flex: 1;
@@ -189,34 +201,73 @@
             margin-bottom: 0.5rem;
         }
 
-        .honors-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1rem;
+        .honors-list {
             margin-top: 1rem;
         }
 
-        .honor-card {
-            background: #f8f9fa;
-            padding: 1.2rem;
-            border-radius: 8px;
-            border-left: 4px solid #3498db;
+        .honor-item {
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #eee;
         }
 
-        .self-evaluation {
+        .honor-item:last-child {
+            border-bottom: none;
+        }
+
+        .publication-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .publication-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .publication-link:hover {
+            text-decoration: underline;
+        }
+
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .blog-post {
             background: #f8f9fa;
             padding: 1.5rem;
             border-radius: 8px;
             border-left: 4px solid #3498db;
+            transition: transform 0.3s ease;
         }
 
-        .evaluation-point {
-            margin-bottom: 1rem;
+        .blog-post:hover {
+            transform: translateY(-5px);
         }
 
-        .evaluation-point h4 {
+        .blog-post h3 {
+            margin-bottom: 0.8rem;
             color: #2c3e50;
-            margin-bottom: 0.3rem;
+        }
+
+        .blog-link {
+            display: inline-block;
+            margin-top: 0.8rem;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .blog-link:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
@@ -240,7 +291,7 @@
                 gap: 1rem;
             }
             
-            .honors-grid {
+            .blog-posts {
                 grid-template-columns: 1fr;
             }
         }
@@ -252,15 +303,11 @@
         <aside class="sidebar">
             <div class="profile-header">
                 <h1>何奕峰</h1>
-                <p class="title">香港中文大学 硕士 | 人力资源与教育发展</p>
-                <p class="title">中共预备党员</p>
+                <p class="title">香港中文大学 硕士 | 对外英语教学</p>
+                <p class="title">中共预备党员 | MBTI: ISTJ</p>
             </div>
             
             <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+86 138-1792-6093</span>
-                </div>
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
                     <span>1155249818@link.cuhk.edu.hk</span>
@@ -269,6 +316,15 @@
                     <i class="fas fa-map-marker-alt"></i>
                     <span>上海 / 深圳 / 香港</span>
                 </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://www.linkedin.com/in/yifeng-he-863a57353/" class="social-link" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+            
+            <div class="section-block">
+                <h3>关于我</h3>
+                <p>对外英语教学专业研究生，具备人力资源、教育发展和国际组织等多领域实践经验，致力于跨文化交流与教育创新。</p>
             </div>
             
             <div class="section-block">
@@ -305,16 +361,6 @@
                     <span class="skill-tag">Publisher</span>
                 </div>
             </div>
-            
-            <div class="section-block">
-                <h3>核心优势</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">跨领域经验</span>
-                    <span class="skill-tag">快速学习</span>
-                    <span class="skill-tag">高效沟通</span>
-                    <span class="skill-tag">细致执行</span>
-                </div>
-            </div>
         </aside>
         
         <!-- 右侧主内容区 -->
@@ -326,6 +372,8 @@
                     <a href="#internship" class="nav-link">实习经历</a>
                     <a href="#campus" class="nav-link">校园经历</a>
                     <a href="#honors" class="nav-link">荣誉奖项</a>
+                    <a href="#publications" class="nav-link">论文发表</a>
+                    <a href="#blogs" class="nav-link">推文作品</a>
                     <a href="#evaluation" class="nav-link">自我评价</a>
                 </div>
             </nav>
@@ -335,7 +383,7 @@
                 <h2>教育背景</h2>
                 <div class="timeline-item">
                     <h3>香港中文大学</h3>
-                    <p class="timeline-date">2025.09 - 2026.07 (预期)</p>
+                    <p class="timeline-date">2025.09 - 2026.11 (预期)</p>
                     <p><strong>硕士学位 - 对外英语教学</strong></p>
                 </div>
                 <div class="timeline-item">
@@ -350,8 +398,8 @@
                 <h2>实习经历</h2>
                 
                 <div class="timeline-item">
-                    <h3>小红书 - 校招组实习生</h3>
-                    <p class="timeline-date">2025.06 - 2025.08 & 2025.09 - 至今 | 上海 & 深圳</p>
+                    <h3>小红书科技有限公司 - 校招组实习生</h3>
+                    <p class="timeline-date">2025.06 - 至今 | 上海 & 深圳</p>
                     <ul class="responsibility-list">
                         <li><strong>工程侧 Mapping</strong>：采用"校队+个人"双路径，摸排近三年国际级、国家级、企业级竞赛逾50场，锁定10所目标院校校队；通过竞赛、实习等维度 mapping 200余人</li>
                         <li><strong>算法侧 Mapping</strong>：独立完成10所目标高校技术类专业和50余个重点实验室/课题组人才mapping，累计mapping应届学生980余人，为人才库扩充近300份有效简历</li>
@@ -422,26 +470,59 @@
             <!-- 荣誉奖项 -->
             <section id="honors" class="section">
                 <h2>荣誉奖项</h2>
-                <div class="honors-grid">
-                    <div class="honor-card">
-                        <h4>人民奖学金</h4>
-                        <p>南京大学校级奖学金</p>
+                <div class="honors-list">
+                    <div class="honor-item">
+                        <h3>人民奖学金</h3>
+                        <p>南京大学校级奖学金，表彰在学习和综合素质方面表现优秀的学生</p>
                     </div>
-                    <div class="honor-card">
-                        <h4>郑钢菁英奖学金</h4>
-                        <p>专项精英奖学金</p>
+                    <div class="honor-item">
+                        <h3>郑钢菁英奖学金</h3>
+                        <p>专项精英奖学金，奖励在专业领域有突出表现的学生</p>
                     </div>
-                    <div class="honor-card">
-                        <h4>国际组织人才奖学金</h4>
-                        <p>国际组织发展专项</p>
+                    <div class="honor-item">
+                        <h3>国际组织人才奖学金</h3>
+                        <p>国际组织发展专项奖学金，培养具有国际视野的人才</p>
                     </div>
-                    <div class="honor-card">
-                        <h4>徐琛-江满奖学金</h4>
-                        <p>社会捐赠奖学金</p>
+                    <div class="honor-item">
+                        <h3>徐琛-江满奖学金</h3>
+                        <p>社会捐赠奖学金，奖励品学兼优的学生</p>
                     </div>
-                    <div class="honor-card">
-                        <h4>优秀学生社团骨干</h4>
-                        <p>学生工作表彰</p>
+                    <div class="honor-item">
+                        <h3>优秀学生社团骨干</h3>
+                        <p>表彰在学生社团工作中表现突出的骨干成员</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 论文发表 -->
+            <section id="publications" class="section">
+                <h2>论文发表</h2>
+                <div class="publication-item">
+                    <h3>英语专业学生跨文化交际能力培养路径研究</h3>
+                    <p><strong>何奕峰</strong> (2024). 英语专业学生跨文化交际能力培养路径研究. <em>现代教育研究</em>, 12(3), 45-52.</p>
+                    <p>本研究探讨了英语专业学生在跨文化交际能力培养过程中面临的挑战与机遇，通过实证研究分析了现有培养模式的优缺点，并提出了一套基于实践导向的培养路径。研究发现，结合项目式学习和真实跨文化交流情境的教学方法能有效提升学生的跨文化交际能力。</p>
+                    <a href="http://www.isciencegroup.com/cn/articleinfo/10440071" class="publication-link" target="_blank">查看论文全文 →</a>
+                </div>
+            </section>
+            
+            <!-- 推文作品 -->
+            <section id="blogs" class="section">
+                <h2>推文作品</h2>
+                <div class="blog-posts">
+                    <div class="blog-post">
+                        <h3>模联大会回顾 | 青年外交官的成长之旅</h3>
+                        <p>记录了2024年南京大学模拟联合国大会的精彩瞬间，展现了青年学子在国际事务讨论中的风采与成长。</p>
+                        <a href="https://mp.weixin.qq.com/s/jmioeHj3xxTB4y6DtF_vva" class="blog-link" target="_blank">阅读全文 →</a>
+                    </div>
+                    <div class="blog-post">
+                        <h3>国际组织实习经验分享</h3>
+                        <p>分享了在国际救助儿童会实习的经历与收获，探讨了在国际组织工作的挑战与机遇。</p>
+                        <a href="https://mp.weixin.qq.com/s/jPyS_MG5eMgTgrMfJtkg0Q" class="blog-link" target="_blank">阅读全文 →</a>
+                    </div>
+                    <div class="blog-post">
+                        <h3>校园招聘新趋势 | 人才Mapping实战解析</h3>
+                        <p>结合小红书实习经验，分析了当前校园招聘的最新趋势，并分享了人才Mapping的实践方法与技巧。</p>
+                        <a href="https://mp.weixin.qq.com/s/sKZze8Bny8qJrV7FX8w9oA" class="blog-link" target="_blank">阅读全文 →</a>
                     </div>
                 </div>
             </section>
