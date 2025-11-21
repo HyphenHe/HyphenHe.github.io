@@ -1,12 +1,11 @@
-
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="何奕峰" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>何奕峰 - 个人主页</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* 基础样式重置 */
         * {
             margin: 0;
             padding: 0;
@@ -20,7 +19,6 @@
             background-color: #f8f9fa;
         }
 
-        /* 两栏布局 - 使用Flexbox实现 */
         .container {
             display: flex;
             min-height: 100vh;
@@ -28,27 +26,29 @@
 
         /* 左侧边栏样式 */
         .sidebar {
-            flex: 0 0 300px;
+            flex: 0 0 320px;
             background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
             color: white;
             padding: 2rem;
             position: fixed;
-            width: 300px;
+            width: 320px;
             height: 100vh;
             overflow-y: auto;
         }
 
-        .profile-image {
+        .profile-header {
             text-align: center;
             margin-bottom: 1.5rem;
         }
 
-        .profile-image img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid rgba(255,255,255,0.2);
+        .profile-header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-header .title {
+            font-size: 1rem;
+            opacity: 0.9;
         }
 
         .contact-info {
@@ -68,8 +68,15 @@
             text-align: center;
         }
 
-        .skills {
+        .section-block {
             margin: 1.5rem 0;
+        }
+
+        .section-block h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 0.3rem;
         }
 
         .skill-tags {
@@ -86,15 +93,21 @@
             font-size: 0.8rem;
         }
 
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
         /* 右侧主内容区样式 */
         .main-content {
             flex: 1;
-            margin-left: 300px;
+            margin-left: 320px;
             padding: 2rem 3rem;
             background: white;
         }
 
-        /* 导航栏样式 */
         .navbar {
             background: white;
             padding: 1rem 0;
@@ -119,12 +132,11 @@
             font-weight: 500;
         }
 
-        .nav-link:hover {
+        .nav-link:hover, .nav-link.active {
             background: #3498db;
             color: white;
         }
 
-        /* 内容区块样式 */
         .section {
             margin-bottom: 3rem;
             padding-bottom: 1.5rem;
@@ -143,7 +155,6 @@
             display: inline-block;
         }
 
-        /* 经历时间线样式 */
         .timeline-item {
             margin-bottom: 2rem;
             padding-left: 1.5rem;
@@ -166,30 +177,48 @@
             color: #7f8c8d;
             font-style: italic;
             margin-bottom: 0.5rem;
+            font-weight: 500;
         }
 
-        /* 项目网格样式 */
-        .projects-grid {
+        .responsibility-list {
+            margin-top: 0.8rem;
+            padding-left: 1.2rem;
+        }
+
+        .responsibility-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .honors-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
         }
 
-        .project-card {
+        .honor-card {
+            background: #f8f9fa;
+            padding: 1.2rem;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        .self-evaluation {
             background: #f8f9fa;
             padding: 1.5rem;
             border-radius: 8px;
             border-left: 4px solid #3498db;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        .evaluation-point {
+            margin-bottom: 1rem;
         }
 
-        /* 响应式设计 */
+        .evaluation-point h4 {
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+        }
+
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -211,7 +240,7 @@
                 gap: 1rem;
             }
             
-            .projects-grid {
+            .honors-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -221,61 +250,69 @@
     <div class="container">
         <!-- 左侧边栏 - 个人信息 -->
         <aside class="sidebar">
-            <div class="profile-image">
-                <img src="https://via.placeholder.com/200x200/3498db/ffffff?text=Your+Photo" alt="个人照片" id="profile-pic">
+            <div class="profile-header">
+                <h1>何奕峰</h1>
+                <p class="title">香港中文大学 硕士 | 人力资源与教育发展</p>
+                <p class="title">中共预备党员</p>
             </div>
-            
-            <h1 id="username">何奕峰</h1>
-            <p class="title" id="job-title">2027届/香港中文大学</p>
             
             <div class="contact-info">
                 <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+86 138-1792-6093</span>
+                </div>
+                <div class="contact-item">
                     <i class="fas fa-envelope"></i>
-                    <span id="email">your.email@example.com</span>
+                    <span>1155249818@link.cuhk.edu.hk</span>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt"></i>
-                    <span id="location">上海/深圳/香港</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span id="phone">电话号码</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-github"></i>
-                    <span id="github">GitHub用户名</span>
+                    <span>上海 / 深圳 / 香港</span>
                 </div>
             </div>
             
-            <div class="about">
-                <h3>关于我</h3>
-                <p id="user-bio">目前英专在读，向人力资源转型中</p>
-            </div>
-            
-            <div class="skills">
-                <h3>研究领域</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">领域一</span>
-                    <span class="skill-tag">领域二</span>
-                    <span class="skill-tag">领域三</span>
-                </div>
-            </div>
-            
-            <div class="skills">
-                <h3>技术技能</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">技能一</span>
-                    <span class="skill-tag">技能二</span>
-                    <span class="skill-tag">技能三</span>
-                    <span class="skill-tag">技能四</span>
-                </div>
-            </div>
-            
-            <div class="languages">
+            <div class="section-block">
                 <h3>语言能力</h3>
+                <div class="language-item">
+                    <span>英文</span>
+                    <span>雅思7.5 | 专八优秀</span>
+                </div>
+                <div class="language-item">
+                    <span>中文</span>
+                    <span>普通话二甲</span>
+                </div>
+            </div>
+            
+            <div class="section-block">
+                <h3>专业技能</h3>
                 <div class="skill-tags">
-                    <span class="skill-tag">中文 (母语)</span>
-                    <span class="skill-tag">英语 (流利)</span>
+                    <span class="skill-tag">人才Mapping</span>
+                    <span class="skill-tag">校园招聘</span>
+                    <span class="skill-tag">活动策划</span>
+                    <span class="skill-tag">项目管理</span>
+                    <span class="skill-tag">数据分析</span>
+                </div>
+            </div>
+            
+            <div class="section-block">
+                <h3>软件技能</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Office</span>
+                    <span class="skill-tag">秀米</span>
+                    <span class="skill-tag">可画</span>
+                    <span class="skill-tag">剪映</span>
+                    <span class="skill-tag">Illustrator</span>
+                    <span class="skill-tag">Publisher</span>
+                </div>
+            </div>
+            
+            <div class="section-block">
+                <h3>核心优势</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">跨领域经验</span>
+                    <span class="skill-tag">快速学习</span>
+                    <span class="skill-tag">高效沟通</span>
+                    <span class="skill-tag">细致执行</span>
                 </div>
             </div>
         </aside>
@@ -285,136 +322,146 @@
             <!-- 导航栏 -->
             <nav class="navbar">
                 <div class="nav-links">
-                    <a href="#about" class="nav-link">关于</a>
                     <a href="#education" class="nav-link">教育背景</a>
-                    <a href="#research" class="nav-link">研究经历</a>
-                    <a href="#publications" class="nav-link">学术成果</a>
-                    <a href="#projects" class="nav-link">项目作品</a>
                     <a href="#internship" class="nav-link">实习经历</a>
+                    <a href="#campus" class="nav-link">校园经历</a>
+                    <a href="#honors" class="nav-link">荣誉奖项</a>
+                    <a href="#evaluation" class="nav-link">自我评价</a>
                 </div>
             </nav>
-            
-            <!-- 关于部分 -->
-            <section id="about" class="section">
-                <h2>关于我</h2>
-                <p>在这里写一段详细的自我介绍，包括你的学术背景、研究兴趣、职业目标等。可以分成几个段落，让访问者更全面地了解你。</p>
-                
-                <h3>研究兴趣</h3>
-                <ul>
-                    <li>研究方向一</li>
-                    <li>研究方向二</li>
-                    <li>研究方向三</li>
-                </ul>
-            </section>
             
             <!-- 教育背景 -->
             <section id="education" class="section">
                 <h2>教育背景</h2>
                 <div class="timeline-item">
-                    <h3>学位名称</h3>
-                    <p class="timeline-date">2019年9月 - 2023年6月</p>
-                    <p><strong>学校名称</strong>, 城市, 国家</p>
-                    <p>专业: 你的专业</p>
-                    <p>GPA: X.X/4.0</p>
-                    <p>相关课程: 课程一, 课程二, 课程三</p>
+                    <h3>香港中文大学</h3>
+                    <p class="timeline-date">2025.09 - 2026.07 (预期)</p>
+                    <p><strong>硕士学位 - 对外英语教学</strong></p>
                 </div>
                 <div class="timeline-item">
-                    <h3>学位名称</h3>
-                    <p class="timeline-date">2016年9月 - 2019年6月</p>
-                    <p><strong>学校名称</strong>, 城市, 国家</p>
-                    <p>专业: 你的专业</p>
-                </div>
-            </section>
-            
-            <!-- 研究经历 -->
-            <section id="research" class="section">
-                <h2>研究经历</h2>
-                <div class="timeline-item">
-                    <h3>研究职位/项目名称</h3>
-                    <p class="timeline-date">2022年3月 - 2023年5月</p>
-                    <p><strong>实验室/学校名称</strong>, 导师: 导师姓名</p>
-                    <ul>
-                        <li>研究内容和成果一</li>
-                        <li>研究内容和成果二</li>
-                        <li>使用的方法和技术</li>
-                    </ul>
-                </div>
-                <div class="timeline-item">
-                    <h3>研究职位/项目名称</h3>
-                    <p class="timeline-date">2021年6月 - 2022年2月</p>
-                    <p><strong>实验室/学校名称</strong>, 导师: 导师姓名</p>
-                    <ul>
-                        <li>研究内容和成果一</li>
-                        <li>研究内容和成果二</li>
-                    </ul>
-                </div>
-            </section>
-            
-            <!-- 学术成果 -->
-            <section id="publications" class="section">
-                <h2>学术成果</h2>
-                <div class="publication-list">
-                    <div class="timeline-item">
-                        <h3>论文标题</h3>
-                        <p class="timeline-date">2023年</p>
-                        <p><strong>作者</strong>, 会议/期刊名称, 卷(期), 页码</p>
-                        <p><a href="#">链接到论文</a> | <a href="#">PDF</a> | <a href="#">代码</a></p>
-                    </div>
-                    <div class="timeline-item">
-                        <h3>论文标题</h3>
-                        <p class="timeline-date">2022年</p>
-                        <p><strong>作者</strong>, 会议/期刊名称, 卷(期), 页码</p>
-                        <p><a href="#">链接到论文</a> | <a href="#">PDF</a></p>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- 项目作品 -->
-            <section id="projects" class="section">
-                <h2>项目作品</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <h3>项目名称</h3>
-                        <p>项目描述，包括使用的技术、实现的功能等。</p>
-                        <p><strong>技术栈:</strong> 技术一, 技术二, 技术三</p>
-                        <p><a href="#">代码链接</a> | <a href="#">演示链接</a></p>
-                    </div>
-                    <div class="project-card">
-                        <h3>项目名称</h3>
-                        <p>项目描述，包括使用的技术、实现的功能等。</p>
-                        <p><strong>技术栈:</strong> 技术一, 技术二, 技术三</p>
-                        <p><a href="#">代码链接</a></p>
-                    </div>
-                    <div class="project-card">
-                        <h3>项目名称</h3>
-                        <p>项目描述，包括使用的技术、实现的功能等。</p>
-                        <p><strong>技术栈:</strong> 技术一, 技术二, 技术三</p>
-                        <p><a href="#">代码链接</a> | <a href="#">文档</a></p>
-                    </div>
+                    <h3>南京大学</h3>
+                    <p class="timeline-date">2021.09 - 2025.06</p>
+                    <p><strong>学士学位 - 英语专业</strong></p>
                 </div>
             </section>
             
             <!-- 实习经历 -->
             <section id="internship" class="section">
                 <h2>实习经历</h2>
+                
                 <div class="timeline-item">
-                    <h3>职位名称</h3>
-                    <p class="timeline-date">2022年6月 - 2022年9月</p>
-                    <p><strong>公司名称</strong>, 城市, 国家</p>
-                    <ul>
-                        <li>工作职责和成就一</li>
-                        <li>工作职责和成就二</li>
-                        <li>使用的技术栈和工具</li>
+                    <h3>小红书 - 校招组实习生</h3>
+                    <p class="timeline-date">2025.06 - 2025.08 & 2025.09 - 至今 | 上海 & 深圳</p>
+                    <ul class="responsibility-list">
+                        <li><strong>工程侧 Mapping</strong>：采用"校队+个人"双路径，摸排近三年国际级、国家级、企业级竞赛逾50场，锁定10所目标院校校队；通过竞赛、实习等维度 mapping 200余人</li>
+                        <li><strong>算法侧 Mapping</strong>：独立完成10所目标高校技术类专业和50余个重点实验室/课题组人才mapping，累计mapping应届学生980余人，为人才库扩充近300份有效简历</li>
+                        <li><strong>顶会渠道开源</strong>：独立 mapping 9个顶会，累计 mapping 3200余人，已邮件触达1300余人，建联380人</li>
+                        <li><strong>高校渠道开源</strong>：根据算法、运营、产品等职位人才计划，完成20余个目标高校和30余个院系的定向宣传</li>
+                        <li><strong>面试流程管理</strong>：负责工程侧候选人集中面试安排，完成超200位候选人面试邀约与进度跟进</li>
+                        <li><strong>校园大使运营</strong>：负责泛技术类校园大使简历筛选与面试选拔，跟进30位校园大使后续工作情况</li>
                     </ul>
                 </div>
+                
                 <div class="timeline-item">
-                    <h3>职位名称</h3>
-                    <p class="timeline-date">2021年7月 - 2021年8月</p>
-                    <p><strong>公司名称</strong>, 城市, 国家</p>
-                    <ul>
-                        <li>工作职责和成就一</li>
-                        <li>工作职责和成就二</li>
+                    <h3>安永华明会计师事务所 - 社招组实习生</h3>
+                    <p class="timeline-date">2025.02 - 2025.05 | 上海</p>
+                    <ul class="responsibility-list">
+                        <li><strong>人才招募</strong>：熟练运用猎聘、前程无忧等招聘渠道，独立完成气候变化与可持续发展咨询、（非）金融审计、网络安全、工程造价等多个岗位人才寻聘，完成300余位候选人触达，超30位候选人成功入职</li>
+                        <li><strong>面试跟进</strong>：完成70余场次面试材料准备、候选人联络及面试情况跟进，面试准时率超95%；及时更新面试信息，为通过面试候选人撰写薪资提案，保证候选人offer顺利发放</li>
                     </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>国际救助儿童会 - 0-6岁儿童早期发展项目实习生</h3>
+                    <p class="timeline-date">2024.06 - 2024.12 | 上海</p>
+                    <ul class="responsibility-list">
+                        <li><strong>活动规划与执行</strong>：全程参与乐高亲子活动、项目总结会等活动筹备，协助举办常规项目点家长讲座、亲子活动超20场，统计并更新200余名参与者信息</li>
+                        <li><strong>物料设计与审核</strong>：根据机构设计风格要求，独立完成活动折页、海报、推文设计与制作，与承接方沟通协调完成活动易拉宝和主题背景板等宣传品进度跟进、审校和优化</li>
+                        <li><strong>财务与行政管理</strong>：处理费用报销、物资采购及活动文档归档，与各协办方沟通确保项目高效执行</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- 校园经历 -->
+            <section id="campus" class="section">
+                <h2>校园经历</h2>
+                
+                <div class="timeline-item">
+                    <h3>南播玩工作室 - 总监助理</h3>
+                    <p class="timeline-date">2023.06 - 2024.06 | 江苏南京</p>
+                    <ul class="responsibility-list">
+                        <li><strong>会议统筹</strong>：组织安排50余场联席会、主任办公会等会议，及时发布会议记录，确保会议决议有效落实</li>
+                        <li><strong>企业文化</strong>：定期进行企业文化培训，传达郑钢基金会动态；累计组织9场部门间团建，提升工作室凝聚力</li>
+                        <li><strong>绩效管理</strong>：负责跟进各部门绩效标准制定，核查120余人月度考核结果，并表彰优秀部员</li>
+                        <li><strong>培训开发</strong>：牵头完成月度业务培训课程10余场，提升员工对核心业务技能掌握程度，扩充核心业务团队</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>南京大学学生模拟联合国协会 - 副会长 & 宣传总监</h3>
+                    <p class="timeline-date">2022.09 - 2024.08 | 江苏南京</p>
+                    <ul class="responsibility-list">
+                        <li><strong>协会运营与管理</strong>：全面负责协会日常运营，完成15项社团活动申报与总结，确保活动顺利开展</li>
+                        <li><strong>品牌活动筹办</strong>：筹划并落地社团品牌活动，活动受众累计覆盖全国80余所学校、超500人次</li>
+                        <li><strong>宣传推广</strong>：负责2024年南京大学模拟联合国大会宣传工作，完成30篇推文制作、7件物料设计、闭幕式视频剪辑、人物专访等，针对30余个目标协会进行建联与定向宣传，推文总浏览量超24000</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>其他学生工作</h3>
+                    <p class="timeline-date">2021 - 2024 | 南京大学</p>
+                    <ul class="responsibility-list">
+                        <li><strong>外院实践创新部部长</strong> - 组织策划学院实践创新活动</li>
+                        <li><strong>英语 A 班班长</strong> - 负责班级日常管理与活动组织</li>
+                        <li><strong>模联协会临时团支部团支书</strong> - 领导团支部建设与活动</li>
+                        <li><strong>国际组织发展协会部长</strong> - 推动国际组织相关活动发展</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- 荣誉奖项 -->
+            <section id="honors" class="section">
+                <h2>荣誉奖项</h2>
+                <div class="honors-grid">
+                    <div class="honor-card">
+                        <h4>人民奖学金</h4>
+                        <p>南京大学校级奖学金</p>
+                    </div>
+                    <div class="honor-card">
+                        <h4>郑钢菁英奖学金</h4>
+                        <p>专项精英奖学金</p>
+                    </div>
+                    <div class="honor-card">
+                        <h4>国际组织人才奖学金</h4>
+                        <p>国际组织发展专项</p>
+                    </div>
+                    <div class="honor-card">
+                        <h4>徐琛-江满奖学金</h4>
+                        <p>社会捐赠奖学金</p>
+                    </div>
+                    <div class="honor-card">
+                        <h4>优秀学生社团骨干</h4>
+                        <p>学生工作表彰</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 自我评价 -->
+            <section id="evaluation" class="section">
+                <h2>自我评价</h2>
+                <div class="self-evaluation">
+                    <div class="evaluation-point">
+                        <h4>人力资源专业能力</h4>
+                        <p>具备招聘的实习经历与创业公司的多模块工作经验，具备人才Mapping与活动筹办等专业能力，熟悉校园招聘全流程。</p>
+                    </div>
+                    <div class="evaluation-point">
+                        <h4>多领域的工作经验</h4>
+                        <p>拥有互联网、审计、咨询、国际组织等多领域实习经历，具备跨行业思维与实操经验，能够快速适应不同工作环境。</p>
+                    </div>
+                    <div class="evaluation-point">
+                        <h4>相匹配的性格态度</h4>
+                        <p>能够进行高效沟通，也能细致入微地完成各项工作，具备快速的学习能力与负责的工作态度，善于团队协作与项目管理。</p>
+                    </div>
                 </div>
             </section>
         </main>
