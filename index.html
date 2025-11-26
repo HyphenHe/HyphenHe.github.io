@@ -48,20 +48,24 @@
             padding: 2.5rem;
             max-width: 700px;
             width: 100%;
-            text-align: left; /* ← 全局文字改为左对齐 */
+            text-align: left;
         }
         h1 {
             font-size: 2.4rem;
             color: #2c3e50;
             margin-bottom: 0.3rem;
         }
-        .subtitle {
+        .subtitle-line {
             color: #7f8c8d;
-            margin-bottom: 1.8rem;
             font-size: 1.1rem;
+            line-height: 1.4;
+        }
+        .subtitle-line:not(:last-child) {
+            margin-bottom: 0.2rem;
         }
         .social-links {
             display: flex;
+            justify-content: center; /* ← 强制居中 */
             gap: 1.5rem;
             margin: 1.8rem 0;
         }
@@ -113,7 +117,7 @@
             transform: translateY(-2px);
         }
 
-        /* 新增布局：姓名左 + 照片右 */
+        /* 姓名+照片布局 */
         .hero {
             display: flex;
             align-items: flex-start;
@@ -128,7 +132,7 @@
             text-align: center;
         }
         .avatar {
-            width: 160px;   /* ← 照片更大 */
+            width: 160px;
             height: 160px;
             border-radius: 50%;
             object-fit: cover;
@@ -153,9 +157,6 @@
             }
             .container {
                 text-align: center;
-            }
-            .social-links {
-                justify-content: center;
             }
         }
 
@@ -185,7 +186,8 @@
         <div class="hero">
             <div class="hero-text">
                 <h1>何奕峰</h1>
-                <div class="subtitle">中共预备党员 | 人力资源 | ISTJ | 上海/深圳/香港</div>
+                <div class="subtitle-line">中共预备党员 | 26届应届生</div>
+                <div class="subtitle-line">ISTJ | 人力资源 | 上海/深圳/香港</div>
             </div>
             <div class="hero-photo">
                 <img src="avatar.jpg" alt="何奕峰" class="avatar">
