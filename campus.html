@@ -6,7 +6,6 @@
     <title>校园与媒体 - 何奕峰</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
-        /* 同 education.html 的 style */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', sans-serif;
@@ -35,18 +34,41 @@
         }
         .section h2 {
             color: #2c3e50;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             font-size: 1.6rem;
         }
         .item {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.4rem;
         }
         .item h3 {
             margin-bottom: 0.3rem;
+            color: #2c3e50;
         }
         .item .meta {
             color: #7f8c8d;
             font-size: 0.95rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .compact-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.6rem;
+            margin-top: 0.8rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .compact-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .compact-title {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .compact-meta {
+            color: #7f8c8d;
+            font-size: 0.9rem;
         }
         a {
             color: #3498db;
@@ -65,9 +87,11 @@
 
     <div class="section">
         <h2>🏫 校园经历</h2>
+
+        <!-- 主要经历（详细描述） -->
         <div class="item">
-            <h3>南播玩工作室 江苏南京总监助理</h3>
-            <div class="meta">2023.06 – 2024.06</div>
+            <h3>南播玩工作室 — 江苏南京 · 总监助理</h3>
+            <span class="meta">2023.06 – 2024.06</span>
             <ul>
                 <li><strong>会议统筹：</strong>组织安排多场联席会、主任办公会等会议，并及时发布会议记录，确保会议决议的有效落实。</li>
                 <li><strong>企业文化：</strong>定期进行企业文化培训，传达郑钢基金会动态；累计组织多次部门间团建，提升工作室凝聚力。</li>
@@ -75,14 +99,42 @@
                 <li><strong>培训开发：</strong>牵头完成多场业务培训课程，提升员工对核心业务技能的掌握程度，扩充核心业务团队。</li>
             </ul>
         </div>
+
         <div class="item">
-            <h3>南京大学学生模拟联合国协会 江苏南京副会长&宣传总监</h3>
-            <div class="meta">2022.09 – 2024.08</div>
+            <h3>南京大学学生模拟联合国协会 — 江苏南京 · 副会长 & 宣传总监</h3>
+            <span class="meta">2022.09 – 2024.08</span>
             <ul>
                 <li><strong>协会运营与管理：</strong>全面负责协会的日常运营，完成多项社团活动的申报与总结，确保活动顺利开展。</li>
                 <li><strong>品牌活动筹办：</strong>筹划并落地社团品牌活动，活动受众覆盖多所学校、超多人次。</li>
                 <li><strong>宣传推广：</strong>负责某年南京大学模拟联合国大会宣传工作，完成多篇推文制作、物料设计、闭幕式视频剪辑、人物专访等宣传工作，并针对多个目标协会进行建联与定向宣传，推文总浏览量超。</li>
             </ul>
+        </div>
+
+        <!-- 其他校园经历（紧凑列表） -->
+        <div class="item">
+            <h3>其他校园经历</h3>
+            <div class="compact-list">
+                <div class="compact-item">
+                    <span class="compact-title">南京大学模拟联合国协会 · 学术部部长</span>
+                    <span class="compact-meta">2024.09 – 2025.06</span>
+                </div>
+                <div class="compact-item">
+                    <span class="compact-title">南京大学外国语学院2021级英语A班 · 班长</span>
+                    <span class="compact-meta">2024.09 – 2025.06</span>
+                </div>
+                <div class="compact-item">
+                    <span class="compact-title">南京大学国际组织发展协会 · SD部长</span>
+                    <span class="compact-meta">2023.09 – 2024.08</span>
+                </div>
+                <div class="compact-item">
+                    <span class="compact-title">南京大学外国语学院团委实践创新部 · 部长</span>
+                    <span class="compact-meta">2023.09 – 2024.08</span>
+                </div>
+                <div class="compact-item">
+                    <span class="compact-title">新青轩宣传人才研训班 · 学员</span>
+                    <span class="compact-meta">2023.06 – 2024.06</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -90,17 +142,17 @@
         <h2>📰 媒体推文作品</h2>
         <div class="item">
             <h3>活动回顾 | 上海0-6岁儿童早期发展项目经验交流会</h3>
-            <div class="meta">救助儿童会 · 2024年12月</div>
-            <a href="https://mp.weixin.qq.com/s/jmioeHj3xxTB4y6DtF_vva" target="_blank">阅读全文 →</a>
+            <span class="meta">救助儿童会 · 2024年12月</span>
+            <a href="https://mp.weixin.qq.com/s/jmioeHj3xxTB4y6DtF_vVA" target="_blank">阅读全文 →</a>
         </div>
         <div class="item">
             <h3>NJUMUNC 2024 | 南京大学模拟联合国大会成功举办</h3>
-            <div class="meta">南大模联 · 2024年4月</div>
+            <span class="meta">南大模联 · 2024年4月</span>
             <a href="https://mp.weixin.qq.com/s/jPyS_MG5eMgTgrMfJtkg0Q" target="_blank">阅读全文 →</a>
         </div>
         <div class="item">
             <h3>欢迎你！New MUNer！</h3>
-            <div class="meta">南大模联 · 2023年8月</div>
+            <span class="meta">南大模联 · 2023年8月</span>
             <a href="https://mp.weixin.qq.com/s/sKZze8Bny8qJrV7FX8w9oA" target="_blank">阅读全文 →</a>
         </div>
     </div>
