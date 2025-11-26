@@ -114,6 +114,47 @@
             background: #e1f0ff;
             transform: translateY(-2px);
         }
+
+        /* 新增：照片布局样式 */
+        .hero {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 1.8rem;
+        }
+        .hero-text {
+            flex: 1;
+        }
+        .hero-photo {
+            flex: 0 0 auto;
+            text-align: center;
+        }
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #f0f0f0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .photo-caption {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #7f8c8d;
+        }
+        @media (max-width: 600px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text {
+                width: 100%;
+            }
+            .hero-photo {
+                order: -1;
+            }
+        }
+
         @media (max-width: 600px) {
             .container {
                 padding: 1.8rem 1.2rem;
@@ -138,8 +179,17 @@
     </div>
 
     <div class="container">
-        <h1>Yifeng He</h1>
-        <div class="subtitle">CPC Probationary Member | HRBP/TA | ISTJ | Shanghai / Shenzhen / Hong Kong</div>
+        <!-- 新增：照片与文字并排布局 -->
+        <div class="hero">
+            <div class="hero-text">
+                <h1>Yifeng He</h1>
+                <div class="subtitle">CPC Probationary Member | HR | ISTJ | Shanghai / Shenzhen / Hong Kong</div>
+            </div>
+            <div class="hero-photo">
+                <img src="avatar.jpg" alt="Yifeng He" class="avatar">
+                <div class="photo-caption">Feb 2023, Nanjing</div>
+            </div>
+        </div>
 
         <div class="social-links">
             <a href="mailto:1155249818@link.cuhk.edu.hk" class="social-link" title="Email">
@@ -157,7 +207,7 @@
         </div>
 
         <div class="intro">
-            <p>Hello! I'm Yifeng He, currently pursuing an MA in Teaching English to Speakers of Other Languages (TESOL) at The Chinese University of Hong Kong, expected to graduate in July 2026. I have completed HR internships at EY and Rednote, and am now actively seeking internship or full-time opportunities in Human Resources.</p>
+            <p>Hello! I'm Yifeng He, currently pursuing an MA in Teaching English to Speakers of Other Languages (TESOL) at The Chinese University of Hong Kong, expected to graduate in July 2026. Before that, I gained my bachelor degree at Nanjing University in June 2025. I have completed HR internships at EY and Rednote, and am now actively seeking internship or full-time opportunities in Human Resources.</p>
             <p><strong>A few words about myself:</strong></p>
             <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
                 <li><strong>HR Competence:</strong> Gained hands-on experience in talent mapping, campus recruitment, and event coordination through internships and startup work.</li>
