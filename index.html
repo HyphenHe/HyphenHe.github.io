@@ -58,14 +58,19 @@
         .subtitle-line {
             color: #7f8c8d;
             font-size: 1.1rem;
-            line-height: 1.4;
+            line-height: 1.6; /* ← 行距增大 */
+        }
+        .subtitle-line.quote {
+            color: #555;
+            font-style: italic;
+            font-size: 1rem;
         }
         .subtitle-line:not(:last-child) {
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.3rem; /* ← 行间距微调 */
         }
         .social-links {
             display: flex;
-            justify-content: center; /* ← 强制居中 */
+            justify-content: center;
             gap: 1.5rem;
             margin: 1.8rem 0;
         }
@@ -188,6 +193,7 @@
                 <h1>何奕峰</h1>
                 <div class="subtitle-line">中共预备党员 | 26届应届生</div>
                 <div class="subtitle-line">ISTJ | 人力资源 | 上海/深圳/香港</div>
+                <div class="subtitle-line quote">机不可失，失不再来</div>
             </div>
             <div class="hero-photo">
                 <img src="avatar.jpg" alt="何奕峰" class="avatar">
