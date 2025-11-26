@@ -48,20 +48,24 @@
             padding: 2.5rem;
             max-width: 700px;
             width: 100%;
-            text-align: left; /* ← 全局左对齐 */
+            text-align: left;
         }
         h1 {
             font-size: 2.4rem;
             color: #2c3e50;
             margin-bottom: 0.3rem;
         }
-        .subtitle {
+        .subtitle-line {
             color: #7f8c8d;
-            margin-bottom: 1.8rem;
             font-size: 1.1rem;
+            line-height: 1.4;
+        }
+        .subtitle-line:not(:last-child) {
+            margin-bottom: 0.2rem;
         }
         .social-links {
             display: flex;
+            justify-content: center; /* ← 确保图标居中 */
             gap: 1.5rem;
             margin: 1.8rem 0;
         }
@@ -113,7 +117,7 @@
             transform: translateY(-2px);
         }
 
-        /* 新增布局 */
+        /* 姓名+照片布局 */
         .hero {
             display: flex;
             align-items: flex-start;
@@ -128,7 +132,7 @@
             text-align: center;
         }
         .avatar {
-            width: 160px;   /* ← 更大照片 */
+            width: 160px;
             height: 160px;
             border-radius: 50%;
             object-fit: cover;
@@ -153,9 +157,6 @@
             }
             .container {
                 text-align: center;
-            }
-            .social-links {
-                justify-content: center;
             }
         }
 
@@ -185,7 +186,8 @@
         <div class="hero">
             <div class="hero-text">
                 <h1>Yifeng HE</h1>
-                <div class="subtitle">CPC Probationary Member | HRBP/TA | ISTJ | Shanghai / Shenzhen / Hong Kong</div>
+                <div class="subtitle-line">CPC Probationary Member | Class of 2026</div>
+                <div class="subtitle-line">ISTJ | HRBP/TA | Shanghai / Shenzhen / Hong Kong</div>
             </div>
             <div class="hero-photo">
                 <img src="avatar.jpg" alt="Yifeng He" class="avatar">
@@ -209,7 +211,7 @@
         </div>
 
         <div class="intro">
-            <p>Hello! I'm Yifeng He, currently pursuing an MA in Teaching English to Speakers of Other Languages (TESOL) at The Chinese University of Hong Kong, expected to graduate in July 2026. Before that, I gained my bachelor degree at Nanjing University, where I was fortunate to be supervised by Dr. Zhao Xin and worked on ecological discourse analysis (EDA). I have completed HR internships at EY and Rednote, and am now actively seeking internship or full-time opportunities in Human Resources.</p>
+            <p>Hello! I'm Yifeng He, currently pursuing the Master degree in Teaching English to Speakers of Other Languages (TESOL) at the Chinese University of Hong Kong. I'm expected to graduate in July 2026. Before that, I gained my bachelor degree at Nanjing University, where I was fortunate to be supervised by Dr. Zhao Xin and worked on ecological discourse analysis and medical discourse analysis. I have taken HR internships at EY and Rednote, and am now actively seeking internship or full-time opportunities in Human Resources.</p>
             <p><strong>A few words about myself:</strong></p>
             <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
                 <li><strong>HR Competence:</strong> Gained hands-on experience in talent mapping, campus recruitment, and event coordination through internships and startup work.</li>
