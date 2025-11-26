@@ -58,14 +58,19 @@
         .subtitle-line {
             color: #7f8c8d;
             font-size: 1.1rem;
-            line-height: 1.4;
+            line-height: 1.5; /* ← 行高适度增大 */
+        }
+        .subtitle-line.quote {
+            color: #555;
+            font-style: italic;
+            font-size: 1rem;
         }
         .subtitle-line:not(:last-child) {
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.25rem; /* ← 微调间距，适配四行 */
         }
         .social-links {
             display: flex;
-            justify-content: center; /* ← 确保图标居中 */
+            justify-content: center;
             gap: 1.5rem;
             margin: 1.8rem 0;
         }
@@ -117,7 +122,7 @@
             transform: translateY(-2px);
         }
 
-        /* 姓名+照片布局 */
+        /* Name + Photo Layout */
         .hero {
             display: flex;
             align-items: flex-start;
@@ -188,6 +193,8 @@
                 <h1>Yifeng HE</h1>
                 <div class="subtitle-line">CPC Probationary Member | Class of 2026</div>
                 <div class="subtitle-line">ISTJ | HRBP/TA | Shanghai / Shenzhen / Hong Kong</div>
+                <div class="subtitle-line quote">U only got one shot, do not miss ur chance to blow</div>
+                <div class="subtitle-line quote">This opportunity comes once in the lifetime</div>
             </div>
             <div class="hero-photo">
                 <img src="avatar.jpg" alt="Yifeng He" class="avatar">
