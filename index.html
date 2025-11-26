@@ -48,12 +48,12 @@
             padding: 2.5rem;
             max-width: 700px;
             width: 100%;
-            text-align: center;
+            text-align: left; /* ← 全局文字改为左对齐 */
         }
         h1 {
             font-size: 2.4rem;
             color: #2c3e50;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
         .subtitle {
             color: #7f8c8d;
@@ -62,7 +62,6 @@
         }
         .social-links {
             display: flex;
-            justify-content: center;
             gap: 1.5rem;
             margin: 1.8rem 0;
         }
@@ -88,7 +87,6 @@
             padding: 1.4rem;
             border-radius: 12px;
             margin: 1.8rem 0;
-            text-align: left;
             font-size: 0.95rem;
             line-height: 1.7;
         }
@@ -115,11 +113,11 @@
             transform: translateY(-2px);
         }
 
-        /* 新增：照片布局样式 */
+        /* 新增布局：姓名左 + 照片右 */
         .hero {
             display: flex;
             align-items: flex-start;
-            gap: 1.5rem;
+            gap: 2rem;
             margin-bottom: 1.8rem;
         }
         .hero-text {
@@ -130,19 +128,19 @@
             text-align: center;
         }
         .avatar {
-            width: 120px;
-            height: 120px;
+            width: 160px;   /* ← 照片更大 */
+            height: 160px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #f0f0f0;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
         }
         .photo-caption {
-            margin-top: 0.5rem;
+            margin-top: 0.6rem;
             font-size: 0.85rem;
             color: #7f8c8d;
         }
-        @media (max-width: 600px) {
+        @media (max-width: 650px) {
             .hero {
                 flex-direction: column;
                 text-align: center;
@@ -152,6 +150,12 @@
             }
             .hero-photo {
                 order: -1;
+            }
+            .container {
+                text-align: center;
+            }
+            .social-links {
+                justify-content: center;
             }
         }
 
@@ -173,13 +177,11 @@
     </style>
 </head>
 <body>
-    <!-- 英文入口（右上角） -->
     <div class="lang-switch">
         <a href="en.html" class="lang-link">English →</a>
     </div>
 
     <div class="container">
-        <!-- 新增：照片与文字并排布局 -->
         <div class="hero">
             <div class="hero-text">
                 <h1>何奕峰</h1>
