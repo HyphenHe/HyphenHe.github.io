@@ -3,40 +3,174 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Yifeng He - Personal Website (EN)</title>
+    <title>Yifeng He - Personal Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
-            font-family: sans-serif;
-            background: #f5f7fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            position: relative;
+        }
+        .lang-switch {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+        }
+        .lang-link {
+            color: white;
+            background: rgba(0,0,0,0.2);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            backdrop-filter: blur(4px);
+        }
+        .lang-link:hover {
+            background: rgba(0,0,0,0.3);
+            text-decoration: underline;
+        }
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            padding: 2.5rem;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.4rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            color: #7f8c8d;
+            margin-bottom: 1.8rem;
+            font-size: 1.1rem;
+        }
+        .social-links {
             display: flex;
             justify-content: center;
+            gap: 1.5rem;
+            margin: 1.8rem 0;
+        }
+        .social-link {
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .box {
-            text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        a {
             color: #3498db;
             text-decoration: none;
-            margin-top: 1rem;
-            display: inline-block;
+            font-size: 0.9rem;
+            width: 80px;
         }
-        a:hover {
-            text-decoration: underline;
+        .social-link i {
+            font-size: 1.8rem;
+            margin-bottom: 0.4rem;
+        }
+        .social-link:hover i,
+        .social-link:hover {
+            color: #2980b9;
+        }
+        .intro {
+            background: #f9fafb;
+            padding: 1.4rem;
+            border-radius: 12px;
+            margin: 1.8rem 0;
+            text-align: left;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .intro p {
+            margin-bottom: 0.8rem;
+        }
+        .nav-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .nav-item {
+            padding: 0.9rem 0.5rem;
+            background: #f1f8ff;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .nav-item:hover {
+            background: #e1f0ff;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.8rem 1.2rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .social-links {
+                gap: 1rem;
+            }
+            .social-link {
+                width: 70px;
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h2>English Version Coming Soon</h2>
-        <p>Thank you for your interest!</p>
-        <a href="index.html">← Back to Chinese Homepage</a>
+    <!-- 中文入口（右上角） -->
+    <div class="lang-switch">
+        <a href="index.html" class="lang-link">中文 ←</a>
+    </div>
+
+    <div class="container">
+        <h1>Yifeng He</h1>
+        <div class="subtitle">CPC Probationary Member | HR | Shanghai / Shenzhen / Hong Kong</div>
+
+        <div class="social-links">
+            <a href="mailto:1155249818@link.cuhk.edu.hk" class="social-link" title="Email">
+                <i class="fas fa-envelope"></i>
+                Email
+            </a>
+            <a href="https://www.linkedin.com/in/yifeng-he-863a57353/" target="_blank" class="social-link" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+                LinkedIn
+            </a>
+            <a href="https://github.com/HyphenHe" target="_blank" class="social-link" title="GitHub">
+                <i class="fab fa-github"></i>
+                GitHub
+            </a>
+        </div>
+
+        <div class="intro">
+            <p>Hello! I'm Yifeng He, currently pursuing an MA in Teaching English to Speakers of Other Languages (TESOL) at The Chinese University of Hong Kong, expected to graduate in July 2026. I have completed HR internships at EY and Rednote, and am now actively seeking internship or full-time opportunities in Human Resources.</p>
+            <p><strong>A few words about myself:</strong></p>
+            <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+                <li><strong>HR Competence:</strong> Gained hands-on experience in talent mapping, campus recruitment, and event coordination through internships and startup work.</li>
+                <li><strong>Cross-industry Exposure:</strong> Interned across internet, audit, consulting, and international organizations—equipped with a versatile, interdisciplinary perspective.</li>
+                <li><strong>Professional Attitude:</strong> Strong communicator with meticulous attention to detail, quick learning ability, and a strong sense of responsibility.</li>
+            </ul>
+        </div>
+
+        <div class="nav-links">
+            <a href="education-en.html" class="nav-item">Education</a>
+            <a href="campus-en.html" class="nav-item">Campus & Media</a>
+            <a href="internships-en.html" class="nav-item">Internships</a>
+        </div>
     </div>
 </body>
 </html>
