@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Yifeng He | HR Talent | MA TESOL @ CUHK | HR Intern @ EY & Rednote">
     <title>Yifeng He - Personal Website</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
@@ -58,7 +59,7 @@
         .subtitle-line {
             color: #7f8c8d;
             font-size: 1.1rem;
-            line-height: 1.5; /* ← 行高适度增大 */
+            line-height: 1.5;
         }
         .subtitle-line.quote {
             color: #555;
@@ -66,7 +67,7 @@
             font-size: 1rem;
         }
         .subtitle-line:not(:last-child) {
-            margin-bottom: 0.25rem; /* ← 微调间距，适配四行 */
+            margin-bottom: 0.25rem;
         }
         .social-links {
             display: flex;
@@ -143,12 +144,79 @@
             object-fit: cover;
             border: 2px solid #f0f0f0;
             box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            loading: lazy;
         }
         .photo-caption {
             margin-top: 0.6rem;
             font-size: 0.85rem;
             color: #7f8c8d;
         }
+
+        /* AI Chat Area */
+        .ai-chatbox {
+            margin-top: 2rem;
+            padding: 1.2rem;
+            background: #f9fbfd;
+            border-radius: 12px;
+            border: 1px solid #e1e8f0;
+        }
+        .ai-chatbox h3 {
+            margin-bottom: 0.8rem;
+            color: #2c3e50;
+            font-size: 1.2rem;
+        }
+        .chat-messages {
+            height: 120px;
+            overflow-y: auto;
+            margin-bottom: 0.8rem;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        .message {
+            padding: 0.4rem 0;
+            font-size: 0.95rem;
+        }
+        .message.user {
+            text-align: right;
+            color: #2980b9;
+        }
+        .message.bot {
+            text-align: left;
+            color: #555;
+        }
+        .chat-input {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        .chat-input button {
+            padding: 0.5rem 1rem;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .chat-input button:hover {
+            background: #2980b9;
+        }
+        .faq-hint {
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        .faq-hint ul {
+            padding-left: 1.2rem;
+            margin-top: 0.3rem;
+        }
+
         @media (max-width: 650px) {
             .hero {
                 flex-direction: column;
@@ -190,14 +258,14 @@
     <div class="container">
         <div class="hero">
             <div class="hero-text">
-                <h1>Yifeng HE</h1>
+                <h1>Yifeng He</h1>
                 <div class="subtitle-line">CPC Probationary Member | Class of 2026</div>
                 <div class="subtitle-line">ISTJ | HRBP/TA | Shanghai / Shenzhen / Hong Kong</div>
                 <div class="subtitle-line quote">U only got one shot, do not miss ur chance to blow</div>
                 <div class="subtitle-line quote">This opportunity comes once in the lifetime</div>
             </div>
             <div class="hero-photo">
-                <img src="avatar.jpg" alt="Yifeng He" class="avatar">
+                <img src="avatar.jpg" alt="Yifeng He" class="avatar" loading="lazy">
                 <div class="photo-caption">Feb 2023, Nanjing</div>
             </div>
         </div>
@@ -218,12 +286,12 @@
         </div>
 
         <div class="intro">
-            <p>Hello! I'm Yifeng He, currently pursuing the Master degree in Teaching English to Speakers of Other Languages (TESOL) at the Chinese University of Hong Kong. I'm expected to graduate in July 2026. Before that, I gained my bachelor degree at Nanjing University, where I was fortunate to be supervised by Dr. Zhao Xin and worked on ecological discourse analysis and medical discourse analysis. I have taken HR internships at EY and Rednote, and am now actively seeking internship or full-time opportunities in Human Resources.</p>
+            <p>Hello! I'm Yifeng He, currently pursuing an MA in Teaching English to Speakers of Other Languages (TESOL) at The Chinese University of Hong Kong, expected to graduate in July 2026. I have completed HR internships at EY and Rednote, and am now actively seeking internship or full-time opportunities in Human Resources.</p>
             <p><strong>A few words about myself:</strong></p>
             <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
-                <li><strong>HR Competence:</strong> Gained hands-on experience in talent mapping, campus recruitment, and event coordination through internships and startup work.</li>
-                <li><strong>Cross-industry Exposure:</strong> Interned across internet, audit, consulting, and international organizations—equipped with a versatile, interdisciplinary perspective.</li>
-                <li><strong>Professional Attitude:</strong> Strong communicator with meticulous attention to detail, quick learning ability, and a strong sense of responsibility.</li>
+                <li><strong>HR Competence:</strong> Hands-on experience in talent mapping, campus recruitment, and event coordination.</li>
+                <li><strong>Cross-industry Exposure:</strong> Interned in internet, audit, consulting, and international organizations.</li>
+                <li><strong>Professional Attitude:</strong> Detail-oriented, responsible, quick learner, and strong communicator (ISTJ).</li>
             </ul>
         </div>
 
@@ -232,6 +300,121 @@
             <a href="campus-en.html" class="nav-item">Campus & Media</a>
             <a href="internships-en.html" class="nav-item">Internships</a>
         </div>
+
+        <!-- AI Chatbot -->
+        <div class="ai-chatbox">
+            <h3>Ask me anything 👋</h3>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">Hi! Feel free to ask me about my education, internships, campus involvement, or career goals!</div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="e.g. Where have you interned?" />
+                <button id="sendBtn">Send</button>
+            </div>
+            <div class="faq-hint" id="faqHint"></div>
+        </div>
     </div>
+
+    <script>
+        // English Q&A Knowledge Base (with bilingual keyword support)
+        const faq = [
+          {
+            keywords: ['who', 'introduce', 'about', 'yourself', 'name'],
+            answer: 'I am Yifeng He, a CPC Probationary Member, currently pursuing an MA in TESOL at The Chinese University of Hong Kong (graduating July 2026). I hold a BA in English from Nanjing University and am actively seeking HR roles.'
+          },
+          {
+            keywords: ['intern', 'internship', 'experience', 'EY', 'Rednote', 'Recruitment', 'Save the Children'],
+            answer: 'I interned at EY (social recruitment) and Rednote (campus recruitment), focusing on talent mapping and interview coordination. I also supported Save the Children’s early childhood development project in communications and event execution.'
+          },
+          {
+            keywords: ['why HR', 'career switch', 'HR', 'motivation', 'efficacy', 'impact', 'influence'],
+            answer: 'Compared to education, HR gives me stronger efficacy—I directly contribute to talent decisions and business outcomes. Meanwhile, it still offers rich opportunities for communication and personal influence, which aligns with my ISTJ strengths in execution and reliability.'
+          },
+          {
+            keywords: ['campus', 'student organization', 'NJUMUN', 'Nanbo Play', 'leadership'],
+            answer: 'At Nanjing University, I served as Vice President of the Model UN Association, Assistant to the Director at Nanbo Play Studio, Class Monitor, and Head of Practice & Innovation Department in the School of Foreign Studies.'
+          },
+          {
+            keywords: ['skills', 'competence', 'strengths', 'abilities'],
+            answer: 'HR skills: talent mapping, campus recruitment, event coordination. Cross-industry exposure: internet, audit, consulting, NGOs. Personal traits: detail-oriented, responsible, quick learner, strong communicator (ISTJ).'
+          },
+          {
+            keywords: ['education', 'school', 'degree', 'Nanjing University', 'CUHK', 'TESOL'],
+            answer: 'BA in English from Nanjing University (2021–2025). Currently pursuing MA in TESOL at The Chinese University of Hong Kong (2025–2026.07), with career focus on HR.'
+          },
+          {
+            keywords: ['award', 'scholarship', 'honor'],
+            answer: 'Xu Chen-Jiang Man Scholarship (2025), Outstanding Student Club Cadre (2024), International Organization Talent Scholarship (2024), People’s Scholarship (2023 & 2024), Zheng Gang Elite Scholarship (2023).'
+          },
+          {
+            keywords: ['personality', 'ISTJ', 'MBTI'],
+            answer: 'I’m an ISTJ: detail-oriented, reliable, and planful. These traits help me manage recruitment logistics, event planning, and deliver results consistently—qualities well-suited for HR execution roles.'
+          },
+          {
+            keywords: ['job', 'opportunity', 'hiring', 'role', 'career goal'],
+            answer: 'I’m seeking HR internship or full-time roles in 2025 H2, preferably in Recruiting (TA) or HRBP, based in Shanghai, Shenzhen, or Hong Kong.'
+          }
+        ];
+
+        function findAnswer(question) {
+          const lowerQ = question.toLowerCase();
+          for (const item of faq) {
+            if (item.keywords.some(kw => lowerQ.includes(kw.toLowerCase()))) {
+              return item.answer;
+            }
+          }
+          return null;
+        }
+
+        function getFAQList() {
+          return [
+            'Who are you?',
+            'What internships have you done?',
+            'Why do you want to work in HR?',
+            'What campus activities were you involved in?',
+            'What are your key skills?',
+            'What is your educational background?',
+            'What awards have you received?',
+            'What is your personality type?',
+            'What kind of job are you looking for?'
+          ];
+        }
+
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const faqHint = document.getElementById('faqHint');
+
+        function addMessage(text, isUser = false) {
+          const msgDiv = document.createElement('div');
+          msgDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+          msgDiv.textContent = text;
+          chatMessages.appendChild(msgDiv);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function sendMessage() {
+          const question = userInput.value.trim();
+          if (!question) return;
+          
+          addMessage(question, true);
+          userInput.value = '';
+
+          const answer = findAnswer(question);
+          if (answer) {
+            addMessage(answer);
+            faqHint.innerHTML = '';
+          } else {
+            addMessage('Sorry, I don’t have a prepared answer for that yet.');
+            const questions = getFAQList();
+            faqHint.innerHTML = `<p>Try asking me one of these:</p><ul>${questions.map(q => `<li>${q}</li>`).join('')}</ul>`;
+          }
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+        userInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') sendMessage();
+        });
+    </script>
 </body>
 </html>
