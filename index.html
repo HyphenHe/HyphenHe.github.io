@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="何奕峰 | 人力资源求职者 | 香港中文大学 TESOL 硕士在读 | EY & Rednote 招聘实习经历">
     <title>何奕峰 - 个人主页</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
@@ -58,7 +59,7 @@
         .subtitle-line {
             color: #7f8c8d;
             font-size: 1.1rem;
-            line-height: 1.6; /* ← 行距增大 */
+            line-height: 1.6;
         }
         .subtitle-line.quote {
             color: #555;
@@ -66,7 +67,7 @@
             font-size: 1rem;
         }
         .subtitle-line:not(:last-child) {
-            margin-bottom: 0.3rem; /* ← 行间距微调 */
+            margin-bottom: 0.3rem;
         }
         .social-links {
             display: flex;
@@ -143,12 +144,79 @@
             object-fit: cover;
             border: 2px solid #f0f0f0;
             box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            loading: lazy;
         }
         .photo-caption {
             margin-top: 0.6rem;
             font-size: 0.85rem;
             color: #7f8c8d;
         }
+
+        /* AI 问答区 */
+        .ai-chatbox {
+            margin-top: 2rem;
+            padding: 1.2rem;
+            background: #f9fbfd;
+            border-radius: 12px;
+            border: 1px solid #e1e8f0;
+        }
+        .ai-chatbox h3 {
+            margin-bottom: 0.8rem;
+            color: #2c3e50;
+            font-size: 1.2rem;
+        }
+        .chat-messages {
+            height: 120px;
+            overflow-y: auto;
+            margin-bottom: 0.8rem;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        .message {
+            padding: 0.4rem 0;
+            font-size: 0.95rem;
+        }
+        .message.user {
+            text-align: right;
+            color: #2980b9;
+        }
+        .message.bot {
+            text-align: left;
+            color: #555;
+        }
+        .chat-input {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        .chat-input button {
+            padding: 0.5rem 1rem;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .chat-input button:hover {
+            background: #2980b9;
+        }
+        .faq-hint {
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        .faq-hint ul {
+            padding-left: 1.2rem;
+            margin-top: 0.3rem;
+        }
+
         @media (max-width: 650px) {
             .hero {
                 flex-direction: column;
@@ -196,7 +264,7 @@
                 <div class="subtitle-line quote">机不可失，失不再来</div>
             </div>
             <div class="hero-photo">
-                <img src="avatar.jpg" alt="何奕峰" class="avatar">
+                <img src="avatar.jpg" alt="何奕峰" class="avatar" loading="lazy">
                 <div class="photo-caption">2023/02 南京</div>
             </div>
         </div>
@@ -231,6 +299,121 @@
             <a href="campus.html" class="nav-item">校园与媒体</a>
             <a href="internships.html" class="nav-item">实习经历</a>
         </div>
+
+        <!-- AI 问答区 -->
+        <div class="ai-chatbox">
+            <h3>问我任何问题 👋</h3>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">你好！你可以问我关于我的教育、实习、校园经历、求职方向等问题～</div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="例如：你在哪实习过？" />
+                <button id="sendBtn">发送</button>
+            </div>
+            <div class="faq-hint" id="faqHint"></div>
+        </div>
     </div>
+
+    <script>
+        // 预设问答库（关键词 + 答案）
+        const faq = [
+          {
+            keywords: ['是谁', '介绍', '自我', '个人'],
+            answer: '我是何奕峰，中共预备党员，香港中文大学对外英语教学（TESOL）硕士在读（2026年7月毕业），南京大学英语学士。目前正在寻求人力资源相关实习或全职机会。'
+          },
+          {
+            keywords: ['实习', 'intern', 'internship', 'experience', '小红书', 'EY', '安永', 'Rednote'],
+            answer: '我有三段核心实习：小红书（Rednote）校招组实习生，负责工程/算法岗人才 Mapping；安永（EY）社招组实习生，支持多岗位招聘；救助儿童会（Save the Children）0-6岁项目实习生，参与活动与宣传。'
+          },
+          {
+            keywords: ['为什么', 'HR', '人力资源', '转行', '效能感', '影响力'],
+            answer: '相比教育行业，人力资源工作能给我更强的效能感——我能直接参与人才决策、推动组织发展；同时，这份工作依然充满沟通与影响力，无论是与候选人建立信任，还是协同业务部门解决问题，都能发挥我的人际优势。我的 ISTJ 性格也与 HR 高度匹配。'
+          },
+          {
+            keywords: ['校园', '社团', '模联', 'NJUMUN', '南播玩', '班长'],
+            answer: '我在南京大学期间担任南大模联副会长兼宣传总监、南播玩工作室总监助理、班级班长、院团委实践创新部部长、国际组织发展协会 SD 部长等。'
+          },
+          {
+            keywords: ['技能', '能力', '特长'],
+            answer: 'HR 专业能力：人才 Mapping、校园招聘、活动筹办；跨领域能力：互联网、审计、咨询、国际组织实习经验；个人特质：高效沟通、细致执行、快速学习、责任心强（ISTJ）。'
+          },
+          {
+            keywords: ['教育', '学校', '毕业', '学历', '南京大学', '港中文', 'CUHK'],
+            answer: '本科毕业于南京大学英语系（2021–2025），期间发表论文《疫情标语的批评语用学研究》；目前在港中文攻读 TESOL 硕士（2025–2026.07），职业方向聚焦人力资源。'
+          },
+          {
+            keywords: ['荣誉', '奖项', '奖学金'],
+            answer: '徐琛-江满奖学金（2025.06）、优秀学生社团骨干（2024.12）、国际组织人才奖学金（2024.06）、人民奖学金（2023.12 & 2024.12）、郑钢菁英奖学金（2023.12）。'
+          },
+          {
+            keywords: ['性格', 'ISTJ', 'personality'],
+            answer: '我是 ISTJ（物流师型人格）：细致可靠、计划性强、责任感强。这些特质让我能高效处理招聘细节、活动筹备与结果交付，与 HR 工作高度匹配。'
+          },
+          {
+            keywords: ['找工作', '求职', '岗位', '机会', 'offer'],
+            answer: '我希望在 2025 年下半年加入一家重视人才发展的组织，担任 HR 招聘（Recruiter / TA）或 HRBP 相关岗位，地点优先上海、深圳或香港。'
+          }
+        ];
+
+        function findAnswer(question) {
+          const lowerQ = question.toLowerCase();
+          for (const item of faq) {
+            if (item.keywords.some(kw => lowerQ.includes(kw.toLowerCase()))) {
+              return item.answer;
+            }
+          }
+          return null;
+        }
+
+        function getFAQList() {
+          return [
+            '你是谁？',
+            '你的实习经历有哪些？',
+            '你为什么想做 HR？',
+            '你有什么校园经历？',
+            '你有哪些技能或能力？',
+            '你的教育背景是什么？',
+            '你获得过哪些荣誉？',
+            '你的性格类型是什么？',
+            '你目前在找什么样的工作？'
+          ];
+        }
+
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const faqHint = document.getElementById('faqHint');
+
+        function addMessage(text, isUser = false) {
+          const msgDiv = document.createElement('div');
+          msgDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+          msgDiv.textContent = text;
+          chatMessages.appendChild(msgDiv);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function sendMessage() {
+          const question = userInput.value.trim();
+          if (!question) return;
+          
+          addMessage(question, true);
+          userInput.value = '';
+
+          const answer = findAnswer(question);
+          if (answer) {
+            addMessage(answer);
+            faqHint.innerHTML = '';
+          } else {
+            addMessage('抱歉，我暂时没有关于这个问题的准备答案。');
+            const questions = getFAQList();
+            faqHint.innerHTML = `<p>你可以试试问我以下问题：</p><ul>${questions.map(q => `<li>${q}</li>`).join('')}</ul>`;
+          }
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+        userInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') sendMessage();
+        });
+    </script>
 </body>
 </html>
