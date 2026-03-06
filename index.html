@@ -16,18 +16,60 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+            background: linear-gradient(-45deg, #f6d365, #fda085, #ff9a9e, #fecfef);
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 2rem 1rem;
             position: relative;
+            overflow-x: hidden;
         }
+
+        /* 背景渐变流动 */
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 页面加载淡入动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* 头像浮动动画 */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* 打字机光标 */
+        @keyframes blink {
+            0%, 50% { border-color: transparent; }
+            51%, 100% { border-color: #555; }
+        }
+
         .lang-switch {
             position: absolute;
             top: 1.5rem;
             right: 1.5rem;
+            animation: fadeIn 0.6s ease-out;
+            z-index: 10;
         }
         .lang-link {
             color: white;
@@ -37,43 +79,73 @@
             text-decoration: none;
             font-size: 0.9rem;
             backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
         }
         .lang-link:hover {
-            background: rgba(0,0,0,0.3);
-            text-decoration: underline;
+            background: rgba(0,0,0,0.4);
+            transform: scale(1.05);
         }
+
         .container {
             background: white;
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
             padding: 2.5rem;
             max-width: 700px;
             width: 100%;
             text-align: left;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
         }
+
         h1 {
             font-size: 2.4rem;
             color: #2c3e50;
             margin-bottom: 0.3rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 0.4s forwards;
         }
+
         .subtitle-line {
             color: #7f8c8d;
             font-size: 1.1rem;
             line-height: 1.6;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
         }
+        .subtitle-line:nth-child(2) { animation-delay: 0.5s; }
+        .subtitle-line:nth-child(3) { animation-delay: 0.6s; }
+
         .subtitle-line.quote {
             color: #555;
             font-style: italic;
             font-size: 1rem;
+            display: inline-block;
+            border-right: 2px solid #555;
+            padding-right: 4px;
+            animation-delay: 0.7s;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: fadeInUp 0.6s ease-out 0.7s forwards, typing 2s steps(12) 1.3s forwards, blink 0.8s step-end infinite;
         }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
         .subtitle-line:not(:last-child) {
             margin-bottom: 0.3rem;
         }
+
         .social-links {
             display: flex;
             justify-content: center;
             gap: 1.5rem;
             margin: 1.8rem 0;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 0.8s forwards;
         }
         .social-link {
             display: flex;
@@ -83,15 +155,21 @@
             text-decoration: none;
             font-size: 0.9rem;
             width: 80px;
+            transition: all 0.3s ease;
         }
         .social-link i {
             font-size: 1.8rem;
             margin-bottom: 0.4rem;
+            transition: all 0.3s ease;
         }
-        .social-link:hover i,
         .social-link:hover {
             color: #2980b9;
+            transform: translateY(-5px);
         }
+        .social-link:hover i {
+            transform: scale(1.2) rotate(10deg);
+        }
+
         .intro {
             background: #f9fafb;
             padding: 1.4rem;
@@ -99,15 +177,25 @@
             margin: 1.8rem 0;
             font-size: 0.95rem;
             line-height: 1.7;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 0.9s forwards;
+            transition: all 0.3s ease;
+        }
+        .intro:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
         }
         .intro p {
             margin-bottom: 0.8rem;
         }
+
         .nav-links {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 1rem;
             margin-top: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 1s forwards;
         }
         .nav-item {
             padding: 0.9rem 0.5rem;
@@ -116,14 +204,31 @@
             text-decoration: none;
             color: #2c3e50;
             font-weight: 600;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(52, 152, 219, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        .nav-item:hover::before {
+            left: 100%;
         }
         .nav-item:hover {
             background: #e1f0ff;
-            transform: translateY(-2px);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.25);
         }
 
-        /* 姓名+照片布局 */
+        /* 姓名 + 照片布局 */
         .hero {
             display: flex;
             align-items: flex-start;
@@ -142,14 +247,22 @@
             height: 160px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid #f0f0f0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-            loading: lazy;
+            border: 3px solid #f0f0f0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            animation: float 4s ease-in-out infinite;
+            transition: all 0.4s ease;
+        }
+        .avatar:hover {
+            transform: scale(1.08);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+            border-color: #3498db;
         }
         .photo-caption {
             margin-top: 0.6rem;
             font-size: 0.85rem;
             color: #7f8c8d;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out 1.1s forwards;
         }
 
         /* AI 问答区 */
@@ -159,6 +272,12 @@
             background: #f9fbfd;
             border-radius: 12px;
             border: 1px solid #e1e8f0;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 1.1s forwards;
+            transition: all 0.3s ease;
+        }
+        .ai-chatbox:hover {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
         }
         .ai-chatbox h3 {
             margin-bottom: 0.8rem;
@@ -177,6 +296,7 @@
         .message {
             padding: 0.4rem 0;
             font-size: 0.95rem;
+            animation: fadeIn 0.3s ease;
         }
         .message.user {
             text-align: right;
@@ -195,6 +315,12 @@
             padding: 0.5rem;
             border: 1px solid #ccc;
             border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        .chat-input input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
         }
         .chat-input button {
             padding: 0.5rem 1rem;
@@ -203,9 +329,11 @@
             border: none;
             border-radius: 6px;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
         .chat-input button:hover {
             background: #2980b9;
+            transform: scale(1.05);
         }
         .faq-hint {
             margin-top: 0.8rem;
@@ -215,6 +343,30 @@
         .faq-hint ul {
             padding-left: 1.2rem;
             margin-top: 0.3rem;
+        }
+        .faq-hint li {
+            margin-bottom: 0.2rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .faq-hint li:hover {
+            color: #3498db;
+        }
+
+        /* 滚动条美化 */
+        .chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+        .chat-messages::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 3px;
+        }
+        .chat-messages::-webkit-scrollbar-thumb:hover {
+            background: #aaa;
         }
 
         @media (max-width: 650px) {
@@ -230,6 +382,12 @@
             }
             .container {
                 text-align: center;
+            }
+            .subtitle-line.quote {
+                white-space: normal;
+                border-right: none;
+                padding-right: 0;
+                animation: fadeInUp 0.6s ease-out 0.7s forwards;
             }
         }
 
@@ -259,12 +417,12 @@
         <div class="hero">
             <div class="hero-text">
                 <h1>何奕峰</h1>
-                <div class="subtitle-line">中共预备党员 | 26届应届生</div>
+                <div class="subtitle-line">中共预备党员 | 26 届应届生</div>
                 <div class="subtitle-line">ISTJ | 人力资源 | 上海/深圳/香港</div>
                 <div class="subtitle-line quote">机不可失，失不再来</div>
             </div>
             <div class="hero-photo">
-                <img src="avatar.jpg" alt="何奕峰" class="avatar" loading="lazy">
+                <img src="https://image.qwenlm.ai/public_source/1c6e20b3-58b6-475c-814a-c0ce8c65691b/1750ae488-37b2-475d-aad0-b7587283505a.png" alt="何奕峰" class="avatar" loading="lazy">
                 <div class="photo-caption">2023/02 南京</div>
             </div>
         </div>
@@ -285,10 +443,10 @@
         </div>
 
         <div class="intro">
-            <p>你好！我是何奕峰，目前就读于香港中文大学，预计于2026年7月毕业。我此前分别在安永EY和小红书做招聘实习生，目前正在看人力资源岗位的实习/工作机会~</p>
+            <p>你好！我是何奕峰，目前就读于香港中文大学，预计于 2026 年 7 月毕业。我此前分别在安永 EY 和小红书做招聘实习生，目前正在看人力资源岗位的实习/工作机会~</p>
             <p><strong>一些自我评价：</strong></p>
             <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
-                <li><strong>人力资源专业能力</strong>：具备招聘的实习经历与创业公司的多模块工作经验，具备人才Mapping与活动筹办等能力</li>
+                <li><strong>人力资源专业能力</strong>：具备招聘的实习经历与创业公司的多模块工作经验，具备人才 Mapping 与活动筹办等能力</li>
                 <li><strong>多领域的工作经验</strong>：曾进行互联网、审计、咨询、国际组织的实习，具备多领域、跨行业的思维与实操经验</li>
                 <li><strong>相匹配的性格态度</strong>：能够进行高效沟通，也能细致入微地完成各项工作，具备快速的学习能力与负责的工作态度</li>
             </ul>
@@ -319,11 +477,11 @@
         const faq = [
           {
             keywords: ['是谁', '介绍', '自我', '个人'],
-            answer: '我是何奕峰，中共预备党员，香港中文大学对外英语教学（TESOL）硕士在读（2026年7月毕业），南京大学英语学士。目前正在寻求人力资源相关实习或全职机会。'
+            answer: '我是何奕峰，中共预备党员，香港中文大学对外英语教学（TESOL）硕士在读（2026 年 7 月毕业），南京大学英语学士。目前正在寻求人力资源相关实习或全职机会。'
           },
           {
             keywords: ['实习', 'intern', 'internship', 'experience', '小红书', 'EY', '安永', 'Rednote'],
-            answer: '我有三段核心实习：小红书（Rednote）校招组实习生，负责工程/算法岗人才 Mapping；安永（EY）社招组实习生，支持多岗位招聘；救助儿童会（Save the Children）0-6岁项目实习生，参与活动与宣传。'
+            answer: '我有三段核心实习：小红书（Rednote）校招组实习生，负责工程/算法岗人才 Mapping；安永（EY）社招组实习生，支持多岗位招聘；救助儿童会（Save the Children）0-6 岁项目实习生，参与活动与宣传。'
           },
           {
             keywords: ['为什么', 'HR', '人力资源', '转行', '效能感', '影响力'],
@@ -343,7 +501,7 @@
           },
           {
             keywords: ['荣誉', '奖项', '奖学金'],
-            answer: '徐琛-江满奖学金（2025.06）、优秀学生社团骨干（2024.12）、国际组织人才奖学金（2024.06）、人民奖学金（2023.12 & 2024.12）、郑钢菁英奖学金（2023.12）。'
+            answer: '徐琛 - 江满奖学金（2025.06）、优秀学生社团骨干（2024.12）、国际组织人才奖学金（2024.06）、人民奖学金（2023.12 & 2024.12）、郑钢菁英奖学金（2023.12）。'
           },
           {
             keywords: ['性格', 'ISTJ', 'personality'],
@@ -406,7 +564,7 @@
           } else {
             addMessage('抱歉，我暂时没有关于这个问题的准备答案。');
             const questions = getFAQList();
-            faqHint.innerHTML = `<p>你可以试试问我以下问题：</p><ul>${questions.map(q => `<li>${q}</li>`).join('')}</ul>`;
+            faqHint.innerHTML = `<p>你可以试试问我以下问题：</p><ul>${questions.map(q => `<li onclick="document.getElementById('userInput').value='${q}'; sendMessage();">${q}</li>`).join('')}</ul>`;
           }
         }
 
@@ -414,6 +572,15 @@
         userInput.addEventListener('keypress', (e) => {
           if (e.key === 'Enter') sendMessage();
         });
+
+        // FAQ 问题点击填充
+        faqHint.addEventListener('click', (e) => {
+          if (e.target.tagName === 'LI') {
+            userInput.value = e.target.textContent;
+            sendMessage();
+          }
+        });
     </script>
 </body>
 </html>
+
