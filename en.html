@@ -28,14 +28,12 @@
             overflow-x: hidden;
         }
 
-        /* Background Gradient Flow */
         @keyframes gradientFlow {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* Page Load Fade-in Animation */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -52,21 +50,14 @@
             to { opacity: 1; }
         }
 
-        /* Avatar Floating Animation */
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-8px); }
         }
 
-        /* Typewriter Cursor */
         @keyframes blink {
             0%, 50% { border-color: transparent; }
             51%, 100% { border-color: #555; }
-        }
-
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
         }
 
         .lang-switch {
@@ -121,7 +112,6 @@
         .subtitle-line:nth-child(2) { animation-delay: 0.5s; }
         .subtitle-line:nth-child(3) { animation-delay: 0.6s; }
 
-        /* 打字机效果 - 两句名言统一样式 */
         .subtitle-line.quote {
             color: #555;
             font-style: italic;
@@ -131,21 +121,8 @@
             padding-right: 4px;
             white-space: nowrap;
             overflow: hidden;
-            width: 0;
-        }
-        /* 第一句打字机 */
-        .subtitle-line.quote:nth-of-type(1) {
-            animation: 
-                fadeInUp 0.6s ease-out 0.7s forwards,
-                typing 2.5s steps(50) 1.3s forwards,
-                blink 0.8s step-end 3.8s infinite;
-        }
-        /* 第二句打字机 */
-        .subtitle-line.quote:nth-of-type(2) {
-            animation: 
-                fadeInUp 0.6s ease-out 1.2s forwards,
-                typing 2.5s steps(50) 1.8s forwards,
-                blink 0.8s step-end 4.3s infinite;
+            min-height: 1.5rem;
+            margin-top: 0.3rem;
         }
 
         .subtitle-line:not(:last-child) {
@@ -241,7 +218,6 @@
             box-shadow: 0 8px 20px rgba(52, 152, 219, 0.25);
         }
 
-        /* Name + Photo Layout */
         .hero {
             display: flex;
             align-items: flex-start;
@@ -278,7 +254,6 @@
             animation: fadeIn 0.6s ease-out 1.1s forwards;
         }
 
-        /* AI Chat Area */
         .ai-chatbox {
             margin-top: 2rem;
             padding: 1.2rem;
@@ -366,7 +341,6 @@
             color: #3498db;
         }
 
-        /* Scrollbar Styling */
         .chat-messages::-webkit-scrollbar {
             width: 6px;
         }
@@ -396,13 +370,10 @@
             .container {
                 text-align: center;
             }
-            /* 移动端禁用打字机效果 */
             .subtitle-line.quote {
                 white-space: normal;
                 border-right: none;
                 padding-right: 0;
-                width: auto !important;
-                animation: fadeInUp 0.6s ease-out 0.7s forwards !important;
             }
         }
 
@@ -434,8 +405,8 @@
                 <h1>Yifeng He</h1>
                 <div class="subtitle-line">CPC Probationary Member | Class of 2026</div>
                 <div class="subtitle-line">ISTJ | HRBP/TA | Shanghai / Shenzhen / Hong Kong</div>
-                <div class="subtitle-line quote">U only got one shot, do not miss ur chance to blow</div>
-                <div class="subtitle-line quote">This opportunity comes once in the lifetime lifetime</div>
+                <div class="subtitle-line quote" id="quote1"></div>
+                <div class="subtitle-line quote" id="quote2"></div>
             </div>
             <div class="hero-photo">
                 <img src="avatar.jpg" alt="Yifeng He" class="avatar" loading="lazy">
@@ -474,7 +445,6 @@
             <a href="internships-en.html" class="nav-item">Internships</a>
         </div>
 
-        <!-- AI Chatbot -->
         <div class="ai-chatbox">
             <h3>Ask me anything 👋</h3>
             <div class="chat-messages" id="chatMessages">
@@ -489,7 +459,36 @@
     </div>
 
     <script>
-        // English Q&A Knowledge Base (with bilingual keyword support)
+        // Typewriter effect using JavaScript
+        function typeWriter(elementId, text, speed, delay) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            
+            setTimeout(() => {
+                let i = 0;
+                element.style.opacity = '1';
+                
+                function type() {
+                    if (i < text.length) {
+                        element.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(type, speed);
+                    }
+                }
+                type();
+            }, delay);
+        }
+
+        // Start typewriter effects after page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const quote1 = "U only got one shot, do not miss ur chance to blow";
+            const quote2 = "This opportunity comes once in the lifetime lifetime";
+            
+            typeWriter('quote1', quote1, 50, 700);
+            typeWriter('quote2', quote2, 50, 1800);
+        });
+
+        // English Q&A Knowledge Base
         const faq = [
           {
             keywords: ['who', 'introduce', 'about', 'yourself', 'name'],
@@ -497,7 +496,7 @@
           },
           {
             keywords: ['intern', 'internship', 'experience', 'EY', 'Rednote', 'Recruitment', 'Save the Children'],
-            answer: 'I interned at EY (social recruitment) and Rednote (campus recruitment), focusing on talent mapping and interview coordination. I also supported Save the Children's early childhood development project in communications and event execution.'
+            answer: 'I interned at EY (social recruitment) and Rednote (campus recruitment), focusing on talent mapping and interview coordination. I also supported Save the Children\'s early childhood development project in communications and event execution.'
           },
           {
             keywords: ['why HR', 'career switch', 'HR', 'motivation', 'efficacy', 'impact', 'influence'],
@@ -517,15 +516,15 @@
           },
           {
             keywords: ['award', 'scholarship', 'honor'],
-            answer: 'Xu Chen-Jiang Man Scholarship (2025), Outstanding Student Club Cadre (2024), International Organization Talent Scholarship (2024), People's Scholarship (2023 & 2024), Zheng Gang Elite Scholarship (2023).'
+            answer: 'Xu Chen-Jiang Man Scholarship (2025), Outstanding Student Club Cadre (2024), International Organization Talent Scholarship (2024), People\'s Scholarship (2023 & 2024), Zheng Gang Elite Scholarship (2023).'
           },
           {
             keywords: ['personality', 'ISTJ', 'MBTI'],
-            answer: 'I'm an ISTJ: detail-oriented, reliable, and planful. These traits help me manage recruitment logistics, event planning, and deliver results consistently—qualities well-suited for HR execution roles.'
+            answer: 'I\'m an ISTJ: detail-oriented, reliable, and planful. These traits help me manage recruitment logistics, event planning, and deliver results consistently—qualities well-suited for HR execution roles.'
           },
           {
             keywords: ['job', 'opportunity', 'hiring', 'role', 'career goal'],
-            answer: 'I'm seeking HR internship or full-time roles in 2025 H2, preferably in Recruiting (TA) or HRBP, based in Shanghai, Shenzhen, or Hong Kong.'
+            answer: 'I\'m seeking HR internship or full-time roles in 2025 H2, preferably in Recruiting (TA) or HRBP, based in Shanghai, Shenzhen, or Hong Kong.'
           }
         ];
 
@@ -589,7 +588,6 @@
           if (e.key === 'Enter') sendMessage();
         });
 
-        // FAQ hint click interaction
         faqHint.addEventListener('click', (e) => {
           if (e.target.tagName === 'LI') {
             userInput.value = e.target.textContent;
